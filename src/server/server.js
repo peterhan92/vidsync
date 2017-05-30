@@ -4,6 +4,9 @@ import express from "express";
 import http from "http";
 import socketIo from "socket.io";
 import chalk from "chalk";
+import {Observable} from "rxjs";
+
+import {ObservableSocket} from "shared/observable-socket";
 
 // --------------------------------------
 // Setup
@@ -56,6 +59,11 @@ app.get("/", (req, res) => {
 // Socket
 io.on("connection", socket => {
 	console.log(`Got connection from ${socket.request.connection.remoteAddress}`);
+
+	const client = new ObservableSocket(socket);
+	client.onAction("login", creds => {
+		throw new Error("WHOA!");
+	});
 });
 
 
