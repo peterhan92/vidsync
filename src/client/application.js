@@ -1,3 +1,5 @@
+import "shared/operators";
+
 import "./application.scss";
 
 import * as services from "./services";
@@ -24,3 +26,8 @@ require("./components/playlist/playlist");
 // --------------------------------------
 // Bootstrap
 services.socket.connect();
+
+services.usersStore.login$("whoa")
+	.subscribe(user => {
+		console.log(user);
+	});

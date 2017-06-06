@@ -6,6 +6,7 @@ import socketIo from "socket.io";
 import chalk from "chalk";
 import {Observable} from "rxjs";
 
+import "shared/operators";
 import {ObservableSocket} from "shared/observable-socket";
 
 import {UsersModule} from "./modules/users";
@@ -81,7 +82,6 @@ io.on("connection", socket => {
 	for (let mod of modules)
 		mod.clientRegistered(client);
 });
-
 
 // --------------------------------------
 // Startup

@@ -6,6 +6,15 @@ export function clientMessage(message) {
 	return error;
 }
 
+export function fail(message) {
+	return Observable.throw({clientMessage: message});
+}
+
+let successObservable = Observable.empty();
+export function success() {
+	return successObservable;
+}
+
 export class ObservableSocket {
 	get isConnected() { return this._state.isConnected; }
 	get isReconnecting() { return this._state.isReconnecting; }
@@ -138,6 +147,15 @@ export class ObservableSocket {
 				console.error(error.stack || error);
 			}
 		});
+	}
+
+	onActions(actions) {
+		for (let action in actions) {
+			if (!actions.hasOwnProperty(action))
+				continue;
+
+			this.onAction(action, actions[action]);
+		}
 	}
 
 	_emitError(action, id, error) {
