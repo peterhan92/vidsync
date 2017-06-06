@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 import "shared/operators";
 
 import "./application.scss";
@@ -15,6 +17,16 @@ services.server
 	});
 // --------------------------------------
 // Auth
+const $html = $("html");
+services.usersStore.currentUser$.subscribe(user => {
+	if (user.isLoggedIn) {
+		$html.removeClass("not-logged-in");
+		$html.addClass("logged-in");
+	} else {
+		$html.addClass("not-logged-in");
+		$html.removeClass("logged-in");
+	}
+});
 
 // --------------------------------------
 // Components
@@ -26,8 +38,3 @@ require("./components/playlist/playlist");
 // --------------------------------------
 // Bootstrap
 services.socket.connect();
-
-services.usersStore.login$("whoa")
-	.subscribe(user => {
-		console.log(user);
-	});
