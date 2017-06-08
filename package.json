@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "heroku-postbuild": "webpack",
     "start": "node build/server"
   },
   "keywords": [],
