@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "NODE_ENV=production node ./build/server"
+    "start": "NODE_ENV=production node build/server.js"
   },
   "keywords": [],
   "author": "",
