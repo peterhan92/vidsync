@@ -2,7 +2,7 @@ var path = require("path"),
 	webpack = require("webpack"),
 	ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const vendorModules = ["jquery", "socket.io-client", "rxjs", "moment"];
+const vendorModules = ["jquery", "lodash", "socket.io-client", "rxjs", "moment"];
 
 const dirname = path.resolve("./");
 function createConfig(isDebug) {
@@ -17,8 +17,8 @@ function createConfig(isDebug) {
 		plugins.push(new webpack.optimize.UglifyJsPlugin());
 		plugins.push(new ExtractTextPlugin("[name].css"));
 
-		cssLoader.loader = ExtractTextPlugin.extract('style', 'css');
-		sassLoader.loader = ExtractTextPlugin.extract('style', 'css!sass');
+		cssLoader.loader = ExtractTextPlugin.extract("style", "css");
+		sassLoader.loader = ExtractTextPlugin.extract("style", "css!sass");
 	} else {
 		plugins.push(new webpack.HotModuleReplacementPlugin());
 		appEntry.splice(0,0, "webpack-hot-middleware/client");
