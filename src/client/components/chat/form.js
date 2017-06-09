@@ -16,7 +16,7 @@ export class ChatFormComponent extends ElementComponent {
 		this._$input = $(`<input type="text" class="chat-input" />`).appendTo(this.$element);
 
 		this._users.currentUser$.compSubscribe(this, user => {
-			this._$input.attr("placeholder", user.isLoggedIn ? "" : "Enter a username");
+			this._$input.attr("placeholder", user.isLoggedIn ? "" : "Enter a Username");
 		});
 
 		Observable.fromEvent(this._$input, "keydown")

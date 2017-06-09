@@ -6,8 +6,8 @@ export let MESSAGE_TYPES = ["normal"];
 export function validateSendMessage(user, message, type) {
 	const validator = new Validator();
 
-	if (message.length > 50)
-		validator.error("Message must be smaller than 50 characters");
+	if (message.length > 100)
+		validator.error("Message must be smaller than 100 characters");
 
 	if (message.trim().length === 0)
 		validator.error("Message cannot be empty");
